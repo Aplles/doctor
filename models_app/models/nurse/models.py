@@ -7,6 +7,7 @@ class Nurse(models.Model):
     email = models.EmailField(max_length=255)
     promo_code = models.CharField(
         max_length=30,
+        unique=True,
         null=True,
         blank=True,
         verbose_name="Промокод"

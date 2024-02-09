@@ -7,6 +7,7 @@ from models_app.models import Nurse
 
 class NurseCreateSerializer(serializers.ModelSerializer):
     city = serializers.CharField(write_only=True)
+    affiliate_program = serializers.BooleanField(default=False)
 
     class Meta:
         model = Nurse
