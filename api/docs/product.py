@@ -1,6 +1,7 @@
 from drf_yasg import openapi
 from rest_framework import status
 
+from api.docs.category import CATEGORY_ITEM
 from api.docs.error import VALIDATION_ERROR
 
 PRODUCT_ITEM = {
@@ -14,7 +15,7 @@ PRODUCT_ITEM = {
             image=openapi.Schema(type=openapi.TYPE_STRING, example="string"),
             price=openapi.Schema(type=openapi.TYPE_INTEGER, example=0),
             discount_price=openapi.Schema(type=openapi.TYPE_INTEGER, example=0),
-            category=openapi.Schema(type=openapi.TYPE_INTEGER, example=0),
+            category=openapi.Schema(type=openapi.TYPE_ARRAY, **CATEGORY_ITEM),
         ),
     ),
 }
