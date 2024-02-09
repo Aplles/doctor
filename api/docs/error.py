@@ -3,14 +3,12 @@ from rest_framework import status
 
 NOT_FOUND_ERROR = {
     404: openapi.Response(
-        'NotFound',
+        'Not Found',
         openapi.Schema(
             title="Error Not Found",
             type=openapi.TYPE_OBJECT,
             properties=dict(
-                type=openapi.Schema(type=openapi.TYPE_STRING, example="NotFound"),
-                message=openapi.Schema(type=openapi.TYPE_STRING, example="Resource not found"),
-                translation_key=openapi.Schema(type=openapi.TYPE_STRING, example="not_found"),
+                detail=openapi.Schema(type=openapi.TYPE_STRING, example="NotFound")
             ),
         ),
     )
@@ -18,14 +16,12 @@ NOT_FOUND_ERROR = {
 
 VALIDATION_ERROR = {
     400: openapi.Response(
-        'Bad request',
+        'Validation Error',
         openapi.Schema(
             title="ValidationError",
             type=openapi.TYPE_OBJECT,
             properties=dict(
-                type=openapi.Schema(type=openapi.TYPE_STRING, example="ValidationError"),
-                message=openapi.Schema(type=openapi.TYPE_STRING, example="Validation error on data"),
-                translation_key=openapi.Schema(type=openapi.TYPE_STRING, example="validation_error"),
+                detail=openapi.Schema(type=openapi.TYPE_STRING, example="ValidationError")
             ),
         ),
     )
@@ -38,9 +34,7 @@ ACCESS_DENIED = {
             title="AccessDenied",
             type=openapi.TYPE_OBJECT,
             properties=dict(
-                type=openapi.Schema(type=openapi.TYPE_STRING, example="AccessDenied"),
-                message=openapi.Schema(type=openapi.TYPE_STRING, example="Access denied"),
-                translation_key=openapi.Schema(type=openapi.TYPE_STRING, example="access_denied"),
+                detail=openapi.Schema(type=openapi.TYPE_STRING, example="AccessDenied")
             ),
         ),
     )
@@ -53,9 +47,7 @@ FORBIDDEN_ERROR = {
             title="ForbiddenError",
             type=openapi.TYPE_OBJECT,
             properties=dict(
-                type=openapi.Schema(type=openapi.TYPE_STRING, example="ForbiddenError"),
-                message=openapi.Schema(type=openapi.TYPE_STRING, example="Not enough rights"),
-                translation_key=openapi.Schema(type=openapi.TYPE_STRING, example="forbidden"),
+                detail=openapi.Schema(type=openapi.TYPE_STRING, example="ForbiddenError")
             ),
         ),
     )

@@ -34,4 +34,6 @@ class ProductListService(ServiceWithResult):
             try:
                 list(map(int, categories_id.split(",")))
             except ValueError:
-                raise ValidationError("The format of the submitted categories is not correct")
+                raise ValidationError({
+                    "detail": "The format of the submitted categories is not correct"
+                })
