@@ -5,6 +5,8 @@ settings = [
     "database.py",  # postgres
     "rest_framework.py",  # rest-framework settings
     "swagger.py",  # swagger settings
+    "corsheaders.py",  # corsheaders settings
+    "smtp.py",  # swagger settings
 ]
 
 # Include settings:
