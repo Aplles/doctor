@@ -1,8 +1,6 @@
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import status
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.response import Response
 from service_objects.services import ServiceOutcome
 
 from api.docs.product import PRODUCT_LIST_VIEW

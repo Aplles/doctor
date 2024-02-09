@@ -21,9 +21,19 @@ class Order(models.Model):
         blank=True,
         verbose_name="Изображение с направлением"
     )
-    delivery = models.CharField(max_length=255, verbose_name="Доставка")
+    delivery = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name="Доставка"
+    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
+    products = models.ManyToManyField(
+        'Product',
+        through='ProductAmount',
+        verbose_name='Продукты',
+    )
 
     class Meta:
         db_table = "orders"

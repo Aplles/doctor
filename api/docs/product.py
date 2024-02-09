@@ -3,9 +3,6 @@ from rest_framework import status
 
 from api.docs.error import VALIDATION_ERROR
 
-created_at = openapi.Schema(type=openapi.TYPE_STRING, example="2023-02-25T15:15:51.217827+03:00"),
-updated_at = openapi.Schema(type=openapi.TYPE_STRING, example="2023-02-25T15:15:51.217827+03:00"),
-
 PRODUCT_ITEM = {
     "items": openapi.Schema(
         type=openapi.TYPE_OBJECT,
