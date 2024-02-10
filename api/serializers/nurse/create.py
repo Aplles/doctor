@@ -7,11 +7,21 @@ from models_app.models import Nurse
 
 class NurseCreateSerializer(serializers.ModelSerializer):
     city = serializers.CharField(write_only=True)
-    affiliate_program = serializers.BooleanField(default=False)
+    promocode = serializers.CharField(write_only=True, required=False)
+    affiliate_program = serializers.BooleanField(default=False, required=False)
 
     class Meta:
         model = Nurse
-        fields = "__all__"
+        fields = (
+            "first_name",
+            "phone",
+            "email",
+            "promocode",
+            "certificate",
+            "photo_with_passport",
+            "city",
+            "affiliate_program",
+        )
 
     def create(self, validated_data):
         return ServiceOutcome(NurseCreateService, {
