@@ -25,7 +25,7 @@ class ProductListService(ServiceWithResult):
         if self.cleaned_data["search"]:
             queryset = queryset.filter(title__icontains=self.cleaned_data["search"])
         if self.cleaned_data["categories_id"]:
-            queryset = queryset.filter(category_id__in=self.cleaned_data["categories_id"].split(','))
+            queryset = queryset.filter(category__id__in=self.cleaned_data["categories_id"].split(','))
         return queryset
 
     def check_categories_id(self):

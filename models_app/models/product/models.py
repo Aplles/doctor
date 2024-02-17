@@ -13,9 +13,8 @@ class Product(models.Model):
         blank=True,
         verbose_name="Цена со скидкой"
     )
-    category = models.ForeignKey(
+    category = models.ManyToManyField(
         "Category",
-        on_delete=models.CASCADE,
         related_name="products",
         verbose_name="Категория"
     )
