@@ -13,6 +13,7 @@ DEBUG = env("DEBUG", cast=str)
 ALLOWED_HOSTS = env("ALLOWED_HOSTS", cast=lambda v: [s.strip() for s in v.split(",")])
 
 INSTALLED_APPS = [
+    'corsheaders',
     'api',
     'models_app.apps.ModelsAppConfig',
     'rest_framework',
@@ -24,7 +25,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drf_yasg',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -35,6 +35,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'conf.urls'
