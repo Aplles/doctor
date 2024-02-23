@@ -3,7 +3,7 @@ from django.db import models
 
 class Order(models.Model):
     first_name = models.CharField(max_length=255, verbose_name="Имя")
-    phone = models.CharField(max_length=16, verbose_name="Номер телефона")
+    phone = models.CharField(max_length=18, verbose_name="Номер телефона")
     address = models.CharField(
         max_length=255,
         null=True,
