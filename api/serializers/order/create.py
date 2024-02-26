@@ -1,3 +1,4 @@
+from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from service_objects.services import ServiceOutcome
 
@@ -8,6 +9,7 @@ from models_app.models import Order
 
 class OrderCreateSerializer(serializers.ModelSerializer):
     products = ProductAmountCreateSerializer(many=True, write_only=True, required=False)
+    direction_image = Base64ImageField(required=False)
 
     class Meta:
         model = Order
