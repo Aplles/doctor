@@ -22,9 +22,8 @@ jobs:
           script: |
             cd /home/somebody/ss/domdoctor/
             git pull
-            whoami > te.txt
-            pipenv shell
-            pipenv install
+            /home/somebody/.local/share/virtualenvs/domdoctor-VaEl9DqM/bin/pipenv shell
+            /home/somebody/.local/share/virtualenvs/domdoctor-VaEl9DqM/bin/pipenv install
             python manage.py collectstatic --noinput
             python manage.py migrate
             sudo service supervisor restart
