@@ -10,4 +10,9 @@ class ProductAdminInline(admin.TabularInline):
 
 @admin.register(ProductAmount)
 class ProductAmountAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'id',
+        'amount',
+        'product',
+        'order',
+    )

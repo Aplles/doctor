@@ -5,4 +5,8 @@ from models_app.models import City
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'id',
+        'name',
+        'is_approved'
+    )
