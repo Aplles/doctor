@@ -25,5 +25,7 @@ jobs:
             /home/somebody/.local/share/virtualenvs/domdoctor-VaEl9DqM/bin/pipenv sync
             /home/somebody/.local/share/virtualenvs/domdoctor-VaEl9DqM/bin/pipenv run python manage.py collectstatic --noinput
             /home/somebody/.local/share/virtualenvs/domdoctor-VaEl9DqM/bin/pipenv run python manage.py migrate
-            sudo service supervisor restart
+            sudo systemctl restart gunicorn.service
+            sudo systemctl restart supervisor
+            sudo systemctl restart nginx
 
