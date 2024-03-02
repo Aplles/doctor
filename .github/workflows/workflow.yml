@@ -25,7 +25,7 @@ jobs:
           script: |
             cd /home/somebody/ss/domdoctor/
             git pull
-            $PIPENV_BIN install --deploy
+            $PIPENV_BIN sync
             $PIPENV_BIN run python manage.py collectstatic --noinput
             $PIPENV_BIN run python manage.py migrate
             sudo service supervisor restart
