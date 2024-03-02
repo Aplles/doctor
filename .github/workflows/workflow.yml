@@ -9,9 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    env:
-      PIPENV_BIN: "/home/somebody/.local/share/virtualenvs/domdoctor-VaEl9DqM/bin/pipenv"
-
     steps:
       - name: Checkout кода
         uses: actions/checkout@v2
@@ -25,7 +22,8 @@ jobs:
           script: |
             cd /home/somebody/ss/domdoctor/
             git pull
-            $PIPENV_BIN sync
-            $PIPENV_BIN run python manage.py collectstatic --noinput
-            $PIPENV_BIN run python manage.py migrate
+            /home/somebody/.local/share/virtualenvs/domdoctor-VaEl9DqM/bin/pipenv sync
+            /home/somebody/.local/share/virtualenvs/domdoctor-VaEl9DqM/bin/pipenv run python manage.py collectstatic --noinput
+            /home/somebody/.local/share/virtualenvs/domdoctor-VaEl9DqM/bin/pipenv run python manage.py migrate
             sudo service supervisor restart
+
