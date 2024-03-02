@@ -19,6 +19,9 @@ class Product(models.Model):
         verbose_name="Категория"
     )
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         db_table = "products"
         verbose_name = "Продукт"

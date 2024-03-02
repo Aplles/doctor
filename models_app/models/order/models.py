@@ -35,6 +35,9 @@ class Order(models.Model):
         verbose_name='Продукты',
     )
 
+    def __str__(self):
+        return f"{self.first_name} - {self.phone}"
+
     class Meta:
         db_table = "orders"
         verbose_name = "Заказ"

@@ -31,6 +31,9 @@ class Nurse(models.Model):
         verbose_name="Город"
     )
 
+    def __str__(self):
+        return f"{self.first_name} - {self.phone}"
+
     class Meta:
         db_table = "nurses"
         verbose_name = "Медсестра"

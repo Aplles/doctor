@@ -16,6 +16,9 @@ class ProductAmount(models.Model):
         verbose_name="Заказ"
     )
 
+    def __str__(self):
+        return f"{self.product} - {self.order} - {self.amount}"
+
     class Meta:
         db_table = "product_amounts"
         verbose_name = "Количество продукта"
