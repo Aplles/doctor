@@ -22,6 +22,7 @@ jobs:
           script: |
             cd /home/somebody/ss/domdoctor/
             git pull
+            whoami > te.txt
             pipenv shell
             pipenv install
             python manage.py collectstatic --noinput
