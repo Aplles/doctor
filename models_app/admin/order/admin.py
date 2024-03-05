@@ -12,6 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
         'first_name',
         'phone',
         'address',
+        'total_price',
         'delivery',
         'created_at',
     )
