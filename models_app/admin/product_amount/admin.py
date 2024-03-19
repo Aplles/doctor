@@ -12,13 +12,3 @@ class ProductAdminInline(admin.TabularInline):
         return obj.product.price
 
     product_price.short_description = 'Цена'
-
-
-@admin.register(ProductAmount)
-class ProductAmountAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'amount',
-        'product',
-        'order',
-    )
