@@ -9,7 +9,7 @@ class City(models.Model):
         "Country",
         on_delete=models.CASCADE,
         related_name="cities_country",
-        verbose_name="Город по умолчанию"
+        verbose_name="Страна"
     )
     product = models.ManyToManyField(
         "Product",
