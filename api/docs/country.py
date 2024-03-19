@@ -25,6 +25,7 @@ COUNTRY_LIST_VIEW = {
                     id=openapi.Schema(type=openapi.TYPE_INTEGER, example=0),
                     name=openapi.Schema(type=openapi.TYPE_STRING, example='string'),
                     localization=openapi.Schema(type=openapi.TYPE_STRING, example='string'),
+                    currency=openapi.Schema(type=openapi.TYPE_STRING, example='string'),
                     cities=openapi.Schema(type=openapi.TYPE_ARRAY, **CITY_ITEM),
                     default_city=openapi.Schema(
                         type=openapi.TYPE_OBJECT,

@@ -1,4 +1,3 @@
-from django.db.models.functions import Upper
 from rest_framework import serializers
 
 from api.serializers.city.list import CitySerializer
@@ -7,6 +6,7 @@ from models_app.models import Country
 
 
 class CountryListSerializer(serializers.ModelSerializer):
+    currency = serializers.SerializerMethodField()
     cities = serializers.SerializerMethodField()
     default_city = serializers.SerializerMethodField()
 
@@ -16,6 +16,7 @@ class CountryListSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "localization",
+            "currency",
             "cities",
             "default_city",
         )
@@ -35,3 +36,6 @@ class CountryListSerializer(serializers.ModelSerializer):
     def get_default_city(self, country):
         if country.default_city and country.default_city.is_approved:
             return CitySerializer(country.default_city).data
+
+    def get_currency(self, country):
+        return country.currency.currency
