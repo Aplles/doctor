@@ -7,9 +7,7 @@ from models_app.models import Product
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'title',
-        'price',
-        'discount_price',
+        'title'
     )
     list_display_links = (
         'id',

@@ -7,16 +7,10 @@ class Product(models.Model):
         upload_to="products/image/%Y/%m/%d/",
         verbose_name="Изображение"
     )
-    price = models.PositiveIntegerField(verbose_name="Цена")
-    discount_price = models.PositiveIntegerField(
-        null=True,
-        blank=True,
-        verbose_name="Цена со скидкой"
-    )
     category = models.ManyToManyField(
         "Category",
         related_name="products",
-        verbose_name="Категория"
+        verbose_name="Категории"
     )
 
     def __str__(self):
