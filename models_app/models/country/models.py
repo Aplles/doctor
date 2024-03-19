@@ -30,5 +30,6 @@ class Country(models.Model):
 
     class Meta:
         db_table = "countries"
+        ordering = ['id']
         verbose_name = "Страна"
         verbose_name_plural = "Страны"

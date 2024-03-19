@@ -1,3 +1,4 @@
+from django.db.models.functions import Upper
 from rest_framework import serializers
 
 from api.serializers.city.list import CitySerializer
@@ -20,8 +21,13 @@ class CountryListSerializer(serializers.ModelSerializer):
         )
 
     def get_cities(self, country):
+        request = self.context['request']
         return CitySerializer(
-            City.objects.filter(country=country, is_approved=True),
+            City.objects.filter(
+                name__icontains=request.query_params.get('search', ''),
+                country=country,
+                is_approved=True
+            ),
             many=True,
             read_only=True
         ).data
@@ -29,4 +35,3 @@ class CountryListSerializer(serializers.ModelSerializer):
     def get_default_city(self, country):
         if country.default_city and country.default_city.is_approved:
             return CitySerializer(country.default_city).data
-
