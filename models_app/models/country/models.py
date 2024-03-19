@@ -13,6 +13,8 @@ class Country(models.Model):
     default_city = models.ForeignKey(
         "City",
         on_delete=models.CASCADE,
+        null=True,
+        blank=True,
         related_name="countries_city",
         verbose_name="Город по умолчанию"
     )
