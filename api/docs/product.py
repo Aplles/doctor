@@ -34,6 +34,7 @@ PRODUCT_LIST_VIEW = {
             'currency', openapi.IN_QUERY,
             description="Передайте валюту, чтобы получить необходимую цену",
             type=openapi.TYPE_STRING,
+            required=True
         ),
         openapi.Parameter(
             'page', openapi.IN_QUERY,
