@@ -1,7 +1,6 @@
 from drf_yasg import openapi
 from rest_framework import status
 
-from api.docs.category import CATEGORY_ITEM
 from api.docs.error import VALIDATION_ERROR
 
 PRODUCT_ITEM = {
@@ -15,7 +14,6 @@ PRODUCT_ITEM = {
             image=openapi.Schema(type=openapi.TYPE_STRING, example="string"),
             price=openapi.Schema(type=openapi.TYPE_INTEGER, example=0),
             discount_price=openapi.Schema(type=openapi.TYPE_INTEGER, example=0),
-            category=openapi.Schema(type=openapi.TYPE_ARRAY, **CATEGORY_ITEM),
         ),
     ),
 }
@@ -32,6 +30,11 @@ PRODUCT_LIST_VIEW = {
         Пример передачи: /api/products/?categories_id=1,2,3
     """,
     'manual_parameters': [
+        openapi.Parameter(
+            'currency', openapi.IN_QUERY,
+            description="Передайте валюту, чтобы получить необходимую цену",
+            type=openapi.TYPE_STRING,
+        ),
         openapi.Parameter(
             'page', openapi.IN_QUERY,
             description="Вы можете указать номер страницы, с которой хотите получить данные",
