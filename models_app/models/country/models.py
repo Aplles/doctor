@@ -20,6 +20,8 @@ class Country(models.Model):
     )
     products = models.ManyToManyField(
         "Product",
+        null=True,
+        blank=True,
         related_name="countries",
         verbose_name="Продукты"
     )
