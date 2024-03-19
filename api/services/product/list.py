@@ -1,15 +1,19 @@
 from django import forms
+from django.db.models import OuterRef, Subquery
 from service_objects.services import ServiceWithResult
 from rest_framework.exceptions import ValidationError
 
 from models_app.models import Product
+from models_app.models import Currency
+from models_app.models import ProductPrice
 
 
 class ProductListService(ServiceWithResult):
     search = forms.CharField(required=False)
     categories_id = forms.CharField(required=False)
+    currency = forms.CharField()
 
-    custom_validations = ['check_categories_id']
+    custom_validations = ['check_categories_id', 'check_currency']
 
     def process(self):
         self.run_custom_validations()
@@ -18,7 +22,14 @@ class ProductListService(ServiceWithResult):
 
     @property
     def _products(self):
-        products = self._filter(Product.objects.all())
+        subquery = ProductPrice.objects.filter(
+            product=OuterRef('pk'),
+            currency__value=self.cleaned_data['currency']
+        ).values('price', 'discount_price')
+        products = self._filter(Product.objects.annotate(
+            price=Subquery(subquery.values('price')),
+            discount_price=Subquery(subquery.values('discount_price')),
+        ).all())
         return products.order_by('-id')
 
     def _filter(self, queryset):
@@ -37,3 +48,16 @@ class ProductListService(ServiceWithResult):
                 raise ValidationError({
                     "detail": "The format of the submitted categories is not correct"
                 })
+
+    def check_currency(self):
+        if self.cleaned_data['currency'] not in list(
+                map(
+                    lambda x: x[0],
+                    list(
+                        Currency.objects.all().values_list('value')
+                    )
+                )
+        ):
+            raise ValidationError({
+                "detail": "No such currency exists"
+            })

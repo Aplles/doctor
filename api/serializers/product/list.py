@@ -4,7 +4,15 @@ from models_app.models import Product
 
 
 class ProductListSerializer(serializers.ModelSerializer):
+    price = serializers.IntegerField()
+    discount_price = serializers.IntegerField()
 
     class Meta:
         model = Product
-        exclude = ("category", )
+        fields = (
+            "id",
+            "title",
+            "image",
+            "price",
+            "discount_price",
+        )

@@ -38,4 +38,4 @@ class CountryListSerializer(serializers.ModelSerializer):
             return CitySerializer(country.default_city).data
 
     def get_currency(self, country):
-        return country.currency.currency
+        return country.currency.value
