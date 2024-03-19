@@ -8,5 +8,7 @@ class CityAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'name',
-        'is_approved'
+        'is_approved',
+        'localization',
+        'country',
     )
