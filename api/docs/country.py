@@ -20,16 +20,19 @@ COUNTRY_LIST_VIEW = {
         status.HTTP_200_OK: openapi.Response(
             "Success",
             openapi.Schema(
-                type=openapi.TYPE_OBJECT,
-                properties=dict(
-                    id=openapi.Schema(type=openapi.TYPE_INTEGER, example=0),
-                    name=openapi.Schema(type=openapi.TYPE_STRING, example='string'),
-                    localization=openapi.Schema(type=openapi.TYPE_STRING, example='string'),
-                    currency=openapi.Schema(type=openapi.TYPE_STRING, example='string'),
-                    cities=openapi.Schema(type=openapi.TYPE_ARRAY, **CITY_ITEM),
-                    default_city=openapi.Schema(
-                        type=openapi.TYPE_OBJECT,
-                        **CITY_ITEM_PROPERTIES
+                type=openapi.TYPE_ARRAY,
+                items=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties=dict(
+                        id=openapi.Schema(type=openapi.TYPE_INTEGER, example=0),
+                        name=openapi.Schema(type=openapi.TYPE_STRING, example='string'),
+                        localization=openapi.Schema(type=openapi.TYPE_STRING, example='string'),
+                        currency=openapi.Schema(type=openapi.TYPE_STRING, example='string'),
+                        cities=openapi.Schema(type=openapi.TYPE_ARRAY, **CITY_ITEM),
+                        default_city=openapi.Schema(
+                            type=openapi.TYPE_OBJECT,
+                            **CITY_ITEM_PROPERTIES
+                        ),
                     ),
                 ),
             ),
