@@ -13,6 +13,7 @@ class City(models.Model):
     )
     product = models.ManyToManyField(
         "Product",
+        blank=True,
         related_name="cities_product",
         verbose_name="Продукты"
     )
