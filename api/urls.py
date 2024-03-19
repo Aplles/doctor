@@ -1,6 +1,7 @@
 from django.urls import path
 
 from api.views.category import CategoryListView
+from api.views.country import CountryListView
 from api.views.nurse import NurseCreateView, NursePromoCodePresenceView
 from api.views.order import OrderCreateView
 from api.views.product import ProductListView
@@ -17,5 +18,7 @@ urlpatterns = [
         name="promo_code_presence"
     ),
     path("categories/", CategoryListView.as_view(), name="categories"),
+
+    path('countries/', CountryListView.as_view(), name="countries")
 ]
 
