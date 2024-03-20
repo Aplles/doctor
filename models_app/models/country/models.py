@@ -3,7 +3,6 @@ from django.db import models
 
 class Country(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название")
-    localization = models.CharField(max_length=3, verbose_name="Локализация")
     currency = models.ForeignKey(
         "Currency",
         on_delete=models.CASCADE,
