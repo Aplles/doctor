@@ -11,8 +11,6 @@ class City(models.Model):
     )
     country = models.ForeignKey(
         "Country",
-        null=True,
-        blank=True,
         on_delete=models.CASCADE,
         related_name="cities_country",
         verbose_name="Страна"
