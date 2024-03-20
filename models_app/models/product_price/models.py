@@ -12,7 +12,7 @@ class ProductPrice(models.Model):
         "City",
         on_delete=models.CASCADE,
         related_name="prices_city",
-        verbose_name="Валюта"
+        verbose_name="Город"
     )
     product = models.ForeignKey(
         "Product",
@@ -26,5 +26,6 @@ class ProductPrice(models.Model):
 
     class Meta:
         db_table = "product_pricies"
+        unique_together = ["product", "city"]
         verbose_name = "Цена на продукт"
         verbose_name_plural = "Цены на продукты"
