@@ -8,10 +8,10 @@ class ProductPrice(models.Model):
         blank=True,
         verbose_name="Цена со скидкой"
     )
-    currency = models.ForeignKey(
-        "Currency",
+    city = models.ForeignKey(
+        "City",
         on_delete=models.CASCADE,
-        related_name="prices_currency",
+        related_name="prices_city",
         verbose_name="Валюта"
     )
     product = models.ForeignKey(
@@ -22,7 +22,7 @@ class ProductPrice(models.Model):
     )
 
     def __str__(self):
-        return f"{self.id} - {self.price} - {self.currency}"
+        return f"{self.id} - {self.price} - {self.city.name}"
 
     class Meta:
         db_table = "product_pricies"

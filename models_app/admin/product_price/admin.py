@@ -10,5 +10,5 @@ class ProductPriceAdmin(admin.ModelAdmin):
         'price',
         'discount_price',
         'product',
-        'currency',
+        'city',
     )
