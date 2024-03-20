@@ -4,14 +4,18 @@ from django.db import models
 class City(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название")
     is_approved = models.BooleanField(default=False, verbose_name="Одобренный")
-    localization = models.CharField(max_length=100, verbose_name="Локализация")
+    localization = models.CharField(
+        max_length=100,
+        unique=True,
+        verbose_name="Локализация"
+    )
     country = models.ForeignKey(
         "Country",
         on_delete=models.CASCADE,
         related_name="cities_country",
         verbose_name="Страна"
     )
-    product = models.ManyToManyField(
+    products = models.ManyToManyField(
         "Product",
         blank=True,
         related_name="cities_product",

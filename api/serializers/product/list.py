@@ -4,8 +4,8 @@ from models_app.models import Product
 
 
 class ProductListSerializer(serializers.ModelSerializer):
-    price = serializers.IntegerField()
-    discount_price = serializers.IntegerField()
+    price = serializers.IntegerField(default=0)
+    discount_price = serializers.IntegerField(default=0)
 
     class Meta:
         model = Product
