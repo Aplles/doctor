@@ -5,7 +5,6 @@ from django.db.models import OuterRef, Subquery
 from service_objects.services import ServiceWithResult
 from rest_framework.exceptions import ValidationError
 
-from models_app.models import Product
 from models_app.models import City
 from models_app.models import ProductPrice
 

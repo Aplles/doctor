@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.serializers.city.list import CitySerializer
+from api.serializers.city.list import CityListSerializer
 from models_app.models import City
 from models_app.models import Country
 
@@ -23,7 +23,7 @@ class CountryListSerializer(serializers.ModelSerializer):
 
     def get_cities(self, country):
         request = self.context['request']
-        return CitySerializer(
+        return CityListSerializer(
             City.objects.filter(
                 name__icontains=request.query_params.get('search', ''),
                 country=country,
@@ -35,7 +35,7 @@ class CountryListSerializer(serializers.ModelSerializer):
 
     def get_default_city(self, country):
         if country.default_city and country.default_city.is_approved:
-            return CitySerializer(country.default_city).data
+            return CityListSerializer(country.default_city).data
 
     def get_currency(self, country):
         return country.currency.value
