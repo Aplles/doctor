@@ -31,12 +31,12 @@ class ProductListService(ServiceWithResult):
         products_from_city = self._filter(self._city.products.annotate(
             price=Subquery(subquery.values('price')),
             discount_price=Subquery(subquery.values('discount_price')),
-        ).all())
+        ).filter(price__isnull=False))
 
         products_from_country = self._filter(self._city.country.products.annotate(
             price=Subquery(subquery.values('price')),
             discount_price=Subquery(subquery.values('discount_price'))
-        ).all())
+        ).filter(price__isnull=False))
 
         return products_from_city.union(products_from_country).order_by('-id')
 
