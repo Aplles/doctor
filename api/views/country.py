@@ -5,14 +5,13 @@ from rest_framework.views import APIView
 from service_objects.services import ServiceOutcome
 
 from api.docs.country import COUNTRY_LIST_VIEW
-from api.serializers.country.list import CountryListSerializer
-from api.serializers.country.show import CountryShowSerializer
+from api.serializers.country.list import CountrySerializer
 from api.services.country.show import CountryShowService
 from models_app.models import Country
 
 
 class CountryListView(ListAPIView):
-    serializer_class = CountryListSerializer
+    serializer_class = CountrySerializer
     pagination_class = None
 
     def get_queryset(self):
@@ -25,7 +24,6 @@ class CountryListView(ListAPIView):
 
 class CountryShowView(APIView):
 
-
     def get(self, request, *args, **kwargs):
         outcome = ServiceOutcome(CountryShowService, kwargs)
-        return Response(CountryShowSerializer(outcome.result).data)
+        return Response(CountrySerializer(outcome.result).data)

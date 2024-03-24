@@ -5,7 +5,7 @@ from models_app.models import City
 from models_app.models import Country
 
 
-class CountryListSerializer(serializers.ModelSerializer):
+class CountrySerializer(serializers.ModelSerializer):
     currency = serializers.SerializerMethodField()
     cities = serializers.SerializerMethodField()
     default_city = serializers.SerializerMethodField()
