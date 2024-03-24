@@ -28,19 +28,17 @@ class ProductListService(ServiceWithResult):
             city__localization=self.cleaned_data['localization']
         ).values('price', 'discount_price')
 
-        products_from_city = self._city.products.annotate(
+        products_from_city = self._filter(self._city.products.annotate(
             price=Subquery(subquery.values('price')),
             discount_price=Subquery(subquery.values('discount_price')),
-        ).all()
+        ).all())
 
-        products_from_country = self._city.country.products.annotate(
+        products_from_country = self._filter(self._city.country.products.annotate(
             price=Subquery(subquery.values('price')),
             discount_price=Subquery(subquery.values('discount_price'))
-        ).all()
+        ).all())
 
-        return self._filter(
-            products_from_city.union(products_from_country)
-        ).order_by('-id')
+        return products_from_city.union(products_from_country).order_by('-id')
 
     def _filter(self, queryset):
         if self.cleaned_data["search"]:
