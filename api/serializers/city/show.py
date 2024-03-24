@@ -4,7 +4,7 @@ from models_app.models import City
 
 
 class CityShowSerializer(serializers.ModelSerializer):
-    currency = serializers.CharField(source='country.localization')
+    currency = serializers.CharField(source='country.currency.valuegit')
 
     class Meta:
         model = City
