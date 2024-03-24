@@ -1,5 +1,5 @@
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import RetrieveAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from service_objects.services import ServiceOutcome
@@ -22,8 +22,8 @@ class CountryListView(ListAPIView):
         return super().get(request, *args, **kwargs)
 
 
-class CountryShowView(APIView):
+class CountryShowView(RetrieveAPIView):
+    serializer_class = CountrySerializer
 
-    def get(self, request, *args, **kwargs):
-        outcome = ServiceOutcome(CountryShowService, kwargs)
-        return Response(CountrySerializer(outcome.result).data)
+    def get_object(self):
+        return ServiceOutcome(CountryShowService, self.kwargs).result
