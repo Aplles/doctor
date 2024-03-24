@@ -9,6 +9,13 @@ class Country(models.Model):
         related_name="countries_currency",
         verbose_name="Валюта"
     )
+    localization = models.CharField(
+        max_length=100,
+        unique=True,
+        null=True,
+        blank=True,
+        verbose_name="Локализация"
+    )
     default_city = models.ForeignKey(
         "City",
         on_delete=models.CASCADE,

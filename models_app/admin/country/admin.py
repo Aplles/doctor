@@ -8,6 +8,11 @@ class CountryAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'name',
+        'localization',
         'currency',
         'default_city',
+    )
+    list_display_links = (
+        'id',
+        'name',
     )

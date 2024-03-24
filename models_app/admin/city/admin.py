@@ -12,3 +12,7 @@ class CityAdmin(admin.ModelAdmin):
         'localization',
         'country',
     )
+    list_display_links = (
+        'id',
+        'name',
+    )

@@ -16,6 +16,7 @@ class CountryListSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "currency",
+            "localization",
             "cities",
             "default_city",
         )
