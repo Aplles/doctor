@@ -12,7 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
         'first_name',
         'phone',
         'address',
-        'total_price',
+        # 'total_price',
         'delivery',
         'created_at',
     )
@@ -26,7 +26,7 @@ class OrderAdmin(admin.ModelAdmin):
         'id',
         'created_at',
         'updated_at',
-        'total_price',
+        # 'total_price',
     )
     fields = (
         'id',
@@ -41,9 +41,9 @@ class OrderAdmin(admin.ModelAdmin):
         'total_price',
     )
 
-    def total_price(self, obj):
-        return obj.products.annotate(
-            product_total_price=F('price') * F('product_amounts__amount')
-        ).aggregate(total=Sum('product_total_price'))['total']
-
-    total_price.short_description = 'Общая стоимость услуг'
+    # def total_price(self, obj):
+    #     return obj.products.annotate(
+    #         product_total_price=F('prices_product__price') * F('product_amounts__amount')
+    #     ).aggregate(total=Sum('product_total_price'))['total']
+    #
+    # total_price.short_description = 'Общая стоимость услуг'
