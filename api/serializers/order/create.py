@@ -19,6 +19,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             "phone",
             "address",
             "description",
+            "localization",
             "direction_image",
             "delivery",
             "created_at",

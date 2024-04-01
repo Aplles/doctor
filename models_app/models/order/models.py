@@ -27,6 +27,11 @@ class Order(models.Model):
         blank=True,
         verbose_name="Доставка"
     )
+    localization = models.CharField(
+        max_length=100,
+        default='-',
+        verbose_name="Локализация"
+    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
     products = models.ManyToManyField(
