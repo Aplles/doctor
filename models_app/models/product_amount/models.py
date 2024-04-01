@@ -21,5 +21,6 @@ class ProductAmount(models.Model):
 
     class Meta:
         db_table = "product_amounts"
+        unique_together = ["product", "order"]
         verbose_name = "Количество продукта"
         verbose_name_plural = "Количество продуктов"
