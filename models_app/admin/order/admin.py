@@ -38,7 +38,7 @@ class OrderAdmin(admin.ModelAdmin):
         'delivery',
         'created_at',
         'updated_at',
-        'total_price',
+        # 'total_price',
     )
 
     # def total_price(self, obj):
