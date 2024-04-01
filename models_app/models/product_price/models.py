@@ -1,5 +1,7 @@
 from django.db import models
 
+from models_app.models import Product
+
 
 class ProductPrice(models.Model):
     price = models.PositiveIntegerField(verbose_name="Цена")
@@ -20,6 +22,13 @@ class ProductPrice(models.Model):
         related_name="prices_product",
         verbose_name="Продукт"
     )
+
+    @staticmethod
+    def price_in_city(product: Product, city_localization: str):
+        return ProductPrice.objects.get(
+            product=product,
+            city__localization=city_localization
+        ).price
 
     def __str__(self):
         return f"{self.id} - {self.price} - {self.city.name}"
