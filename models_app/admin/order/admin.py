@@ -49,7 +49,7 @@ class OrderAdmin(admin.ModelAdmin):
             total_price += ProductPrice.objects.get(
                 product=product,
                 city__localization=obj.localization
-            ).price * product.product_amounts.filter(order=obj).first().amount
+            ).discount_price * product.product_amounts.filter(order=obj).first().amount
         return total_price
 
     total_price.short_description = 'Общая стоимость услуг'

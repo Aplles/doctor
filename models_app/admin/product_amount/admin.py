@@ -12,6 +12,6 @@ class ProductAdminInline(admin.TabularInline):
         return ProductPrice.objects.get(
             product=obj.product,
             city__localization=obj.order.localization
-        ).price
+        ).discount_price
 
     product_price.short_description = 'Цена'
