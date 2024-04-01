@@ -21,7 +21,7 @@ class OrderAdmin(admin.ModelAdmin):
         'first_name',
         'phone',
     )
-    inlines = (ProductAdminInline, )
+    inlines = (ProductAdminInline,)
     readonly_fields = (
         'id',
         'localization',
@@ -46,10 +46,10 @@ class OrderAdmin(admin.ModelAdmin):
     def total_price(self, obj: Order):
         total_price = 0
         for product in obj.products.all():
-            total_price += ProductPrice.price_in_city(
+            total_price += ProductPrice.objects.get(
                 product=product,
-                city_localization=obj.localization
-            ) * product.product_amounts.filter(order=obj).first().amount
+                city__localization=obj.localization
+            ).price * product.product_amounts.filter(order=obj).first().amount
         return total_price
 
     total_price.short_description = 'Общая стоимость услуг'

@@ -23,13 +23,6 @@ class ProductPrice(models.Model):
         verbose_name="Продукт"
     )
 
-    @staticmethod
-    def price_in_city(product: Product, city_localization: str):
-        return ProductPrice.objects.get(
-            product=product,
-            city__localization=city_localization
-        ).price
-
     def __str__(self):
         return f"{self.id} - {self.price} - {self.city.name}"
 
